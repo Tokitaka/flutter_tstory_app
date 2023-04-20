@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tstory_app/constants/routers.dart';
-import 'package:tstory_app/pages/post/for_you_page.dart';
+import 'package:tstory_app/core/constants/routers.dart';
+import 'package:tstory_app/pages/post/home_page/for_you_page.dart';
 import 'package:tstory_app/pages/user/join_form_page.dart';
 import 'package:tstory_app/pages/user/login_form_page.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';

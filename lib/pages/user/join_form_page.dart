@@ -1,7 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:tstory_app/constants/color.dart';
-import 'package:tstory_app/constants/size.dart';
 import 'package:tstory_app/pages/user/login_form_page.dart';
 import 'package:tstory_app/pages/post/scrap_list_page.dart';
 
