@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class PostListTile extends StatelessWidget {
+class CustomPostListTile extends StatelessWidget {
   final String headline, name, group, image;
 
-  const PostListTile(
+  const CustomPostListTile(
       {super.key,
         required this.headline,
         required this.name,

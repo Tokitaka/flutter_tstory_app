@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tstory_app/constants/size.dart';
-import 'package:tstory_app/pages/user/join_form_page.dart';
-import 'package:tstory_app/pages/user/login_form_page.dart';
+import 'package:tstory_app/core/constants/size.dart';
+import 'package:tstory_app/pages/auth/join_page/join_form_page.dart';
+import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
+import 'package:tstory_app/pages/custom_components/custom_arrow_appbar.dart';
 
 class ScrapListPage extends StatelessWidget {
   const ScrapListPage({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class ScrapListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: arrow_appbar(text: "Bookmarked"),
+      appBar: custom_arrow_appbar(text: "Bookmarked"),
       body: Padding(
         padding: myhorizontalpd,
         child: Column(
@@ -67,31 +68,4 @@ class ScrapListPage extends StatelessWidget {
   }
 }
 
-class arrow_appbar extends StatelessWidget implements PreferredSizeWidget{
-  final text;
-  const arrow_appbar({
-    required this.text,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: Colors.black,
-      leading: IconButton(
-        onPressed: () {
-          Navigator.pop(context);
-        },
-        icon: const Icon(Icons.arrow_back_ios_new_outlined),
-      ),
-      title: Text(
-        text,
-        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-      ),
-      centerTitle: true,
-    );
-  }
-
-  @override
-  // TODO: implement preferredSize
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-}

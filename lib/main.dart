@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/pages/post/list_page/home_page/for_you_page.dart';
-import 'package:tstory_app/pages/user/join_form_page.dart';
-import 'package:tstory_app/pages/user/login_form_page.dart';
+import 'package:tstory_app/pages/auth/join_page/join_form_page.dart';
+import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';
 import 'package:tstory_app/pages/post/list_page/my_post_page/my_post_page.dart';
-import 'package:tstory_app/pages/post/scrap_list_page.dart';
-import 'package:tstory_app/pages/post/search_page.dart';
-import 'package:tstory_app/pages/post/write_page.dart';
+import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
+import 'package:tstory_app/pages/post/search_page/search_page.dart';
+import 'package:tstory_app/pages/post/write_page/write_page.dart';
 
 void main() {
   runApp(

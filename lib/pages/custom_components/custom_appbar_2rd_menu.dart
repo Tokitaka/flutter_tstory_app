@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class Appbar2rdMenu extends StatelessWidget {
+class CustomAppbar2rdMenu extends StatelessWidget {
   final String text, route;
 
-  const Appbar2rdMenu({super.key, required this.text, required this.route});
+  const CustomAppbar2rdMenu({super.key, required this.text, required this.route});
 
   @override
   Widget build(BuildContext context) {

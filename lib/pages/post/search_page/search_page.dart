@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tstory_app/pages/post/scrap_list_page.dart';
+import 'package:tstory_app/core/constants/theme.dart';
+import 'package:tstory_app/pages/custom_components/custom_arrow_appbar.dart';
+import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -7,7 +9,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: arrow_appbar(text: "Search"),
+      appBar: custom_arrow_appbar(text: "Search"),
       body: TextField(
         decoration: InputDecoration(
           hintText: 'Search for anything',

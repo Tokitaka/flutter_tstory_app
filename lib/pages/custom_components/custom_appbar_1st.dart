@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tstory_app/pages/post/scrap_list_page.dart';
-import 'package:tstory_app/pages/post/search_page.dart';
+import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
+import 'package:tstory_app/pages/post/search_page/search_page.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';
 
-PreferredSizeWidget appbar_1st(context) {
+PreferredSizeWidget custom_appbar_1st(context) {
   return AppBar(
     backgroundColor: Colors.black,
     leading: Row(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tstory_app/pages/components/custom_appbar_2rd_menu.dart';
+import 'package:tstory_app/pages/custom_components/custom_appbar_2rd_menu.dart';
 
 class PostHomeBody extends StatelessWidget {
   const PostHomeBody({
@@ -14,13 +14,13 @@ class PostHomeBody extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              Appbar2rdMenu(
+              CustomAppbar2rdMenu(
                 text: "FOR YOU",
                 route: "/foryou",
               ),
-              Appbar2rdMenu(text: "MY POST", route: "/home"),
-              Appbar2rdMenu(text: "WRITE", route: "/write"),
-              Appbar2rdMenu(text: "NULL", route: "/fillout"),
+              CustomAppbar2rdMenu(text: "MY POST", route: "/home"),
+              CustomAppbar2rdMenu(text: "WRITE", route: "/write"),
+              CustomAppbar2rdMenu(text: "NULL", route: "/fillout"),
             ],
           ),
         ),

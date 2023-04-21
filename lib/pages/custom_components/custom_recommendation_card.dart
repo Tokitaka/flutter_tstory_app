@@ -1,14 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class RecommendationCard extends StatefulWidget {
-  const RecommendationCard({super.key});
+class CustomRecommendationCard extends StatefulWidget {
+  const CustomRecommendationCard({super.key});
 
   @override
-  State<RecommendationCard> createState() => _RecommendationCardState();
+  State<CustomRecommendationCard> createState() => _CustomRecommendationCardState();
 }
 
-class _RecommendationCardState extends State<RecommendationCard> {
+class _CustomRecommendationCardState extends State<CustomRecommendationCard> {
   int _currentIndex = 0;
   final List<Map<String, String>> _images = [
     {
