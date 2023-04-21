@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(),
       initialRoute: Routers.home,
       routes: {
-        Routers.home: (context) => const MyPostPage(),
-        Routers.forYou: (context) => ForYouPage(),
+        Routers.home: (context) => ForYouPage(),
+        Routers.forYou: (context) => const MyPostPage(),
         Routers.scrapList: (context) => const ScrapListPage(),
         Routers.myInfo: (context) => const MyInfoPage(),
         Routers.search: (context) => const SearchPage(),
