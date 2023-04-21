@@ -13,7 +13,20 @@ class PostRepository {
 
   PostRepository._single();
 
-  Future<ResponseDTO> fetchPosts(String jwt) async {
+  Future<ResponseDTO> fetchAllPosts() async {
+    try {
+      Response response = await dio.get("/post");
+      ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
+      List<dynamic> mapList = responseDTO.data as List<dynamic>;
+      List<Post> postList = mapList.map((e) => Post.fromJson(e)).toList();
+      responseDTO.data = postList;
+      return responseDTO;
+    } catch (e) {
+      return ResponseDTO(code: -1, msg: "실패", data: e);
+    }
+  }
+
+  Future<ResponseDTO> fetchMyPosts(String jwt) async {
     try {
       Response response = await dio.get("/post",
           options: Options(headers: {'Authorization': jwt}));

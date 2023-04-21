@@ -9,7 +9,7 @@ import 'package:tstory_app/provider/session_provider.dart';
 final forYouPageProvider = StateNotifierProvider.autoDispose<ForYouPageViewModel,ForYouPageModel>((ref){
   Logger().d("postHomePageProvider");
   SessionUser sessionUser = ref.read(sessionProvider);
-  return ForYouPageViewModel(null)..notifyInit(sessionUser.jwt!);
+  return ForYouPageViewModel(null)..notifyInit();
 
 });
 // 창고 데이터 ()
@@ -20,29 +20,11 @@ class ForYouPageModel{
 // 창고 - StateNotifier의 state를 바꾸는 방식으로 저장, state를 추적, 창고 데이터가 가지고 있는 데이터는 null 이 가능
 class ForYouPageViewModel extends StateNotifier<ForYouPageModel?>{
   ForYouPageViewModel(super.state);
-  // 창고 내 아이템 관리
+  // Foryoupage는 로그인 없이 접근이 가능하므로, 수정삭제추가가 불가능
   // Post 리스트 초기화
-  void notifyInit(String jwt) async {
-    Logger().d("notifyInit");
-     ResponseDTO responseDTO = await PostRepository().fetchPosts(jwt);
+  void notifyInit() async {
+     Logger().d("notifyInit");
+     ResponseDTO responseDTO = await PostRepository().fetchAllPosts();
      state = ForYouPageModel(posts: responseDTO.data);
-  }
-  // 새로운 post 추가
-  void notifyAdd(Post post){
-    List<Post> posts = state!.posts;
-    List<Post> newPosts = [...posts, post];
-    state = ForYouPageModel(posts: newPosts);
-  }
-  // 특정 id를 가진 post 삭제
-  void notifyRemove(int id){
-    List<Post> posts = state!.posts;
-    List<Post> newPosts = posts.where((e) => e.id != id).toList();
-    state = ForYouPageModel(posts: newPosts);
-  }
-  // 특정 id를 가진 post 수정
-  void notifyUpdate(Post post){
-    List<Post> posts = state!.posts;
-    List<Post> newPosts = posts.map((e) => post.id == e.id ? post : e).toList();
-    state = ForYouPageModel(posts: newPosts);
   }
 }

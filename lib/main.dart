@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tstory_app/core/constants/routers.dart';
-import 'package:tstory_app/pages/post/home_page/for_you_page.dart';
+import 'package:tstory_app/pages/post/list_page/home_page/for_you_page.dart';
 import 'package:tstory_app/pages/user/join_form_page.dart';
 import 'package:tstory_app/pages/user/login_form_page.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';
-import 'package:tstory_app/pages/post/my_post_page.dart';
+import 'package:tstory_app/pages/post/list_page/my_post_page/my_post_page.dart';
 import 'package:tstory_app/pages/post/scrap_list_page.dart';
 import 'package:tstory_app/pages/post/search_page.dart';
 import 'package:tstory_app/pages/post/write_page.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       initialRoute: Routers.home,
       routes: {
         Routers.home: (context) => const MyPostPage(),
-        Routers.forYou: (context) => const ForYouPage(),
+        Routers.forYou: (context) => ForYouPage(),
         Routers.scrapList: (context) => const ScrapListPage(),
         Routers.myInfo: (context) => const MyInfoPage(),
         Routers.search: (context) => const SearchPage(),

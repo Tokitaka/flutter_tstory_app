@@ -4,7 +4,7 @@ import 'package:logger/logger.dart';
 import 'package:tstory_app/pages/components/custom_appbar_1st.dart';
 import 'package:tstory_app/pages/components/custom_post_list_tile.dart';
 import 'package:tstory_app/pages/components/custom_recommendation_card.dart';
-import 'package:tstory_app/pages/post/home_page/components/post_home_body.dart';
+import 'package:tstory_app/pages/post/list_page/home_page/components/post_home_body.dart';
 
 // 창고 데이터를 구독
 class ForYouPage extends ConsumerWidget {
