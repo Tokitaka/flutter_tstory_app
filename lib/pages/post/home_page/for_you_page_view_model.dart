@@ -7,6 +7,7 @@ import 'package:tstory_app/provider/session_provider.dart';
 
 // 창고 관리자
 final forYouPageProvider = StateNotifierProvider.autoDispose<ForYouPageViewModel,ForYouPageModel>((ref){
+  Logger().d("postHomePageProvider");
   SessionUser sessionUser = ref.read(sessionProvider);
   return ForYouPageViewModel(null)..notifyInit(sessionUser.jwt!);
 
@@ -23,7 +24,7 @@ class ForYouPageViewModel extends StateNotifier<ForYouPageModel?>{
   // Post 리스트 초기화
   void notifyInit(String jwt) async {
     Logger().d("notifyInit");
-     ResponseDTO responseDTO = await PostRepository.fetchPostList(jwt);
+     ResponseDTO responseDTO = await PostRepository().fetchPosts(jwt);
      state = ForYouPageModel(posts: responseDTO.data);
   }
   // 새로운 post 추가
@@ -44,7 +45,4 @@ class ForYouPageViewModel extends StateNotifier<ForYouPageModel?>{
     List<Post> newPosts = posts.map((e) => post.id == e.id ? post : e).toList();
     state = ForYouPageModel(posts: newPosts);
   }
-
-
-
 }
