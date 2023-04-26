@@ -8,6 +8,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.10'
+        implementation 'com.google.firebase:firebase-core:20.0.0'
+        implementation 'com.google.firebase:firebase-firestore:24.5.0'
     }
 }
 
@@ -29,3 +32,4 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+apply plugin: 'com.google.gms.google-services'

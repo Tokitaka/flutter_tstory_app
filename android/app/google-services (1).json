@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "544532137880",
+    "project_id": "my-tstory-app",
+    "storage_bucket": "my-tstory-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544532137880:android:6dad87119343b0271f4ded",
+        "android_client_info": {
+          "package_name": "com.example.tstory_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544532137880-agfuvoa3nnjf9k71f9e29pf5blv3qdi1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5tpc5rETd8kVik6-Z9SDctYpW0K0yuZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544532137880-agfuvoa3nnjf9k71f9e29pf5blv3qdi1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
