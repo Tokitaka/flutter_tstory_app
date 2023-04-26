@@ -34,8 +34,7 @@ class ForYouPage extends ConsumerWidget {
               image: "matrix2.jpg",
               headline:
                   "AL TASKED WITH 'DESTROYING HUMANITY 'NOW WORKING ON CONTROL",
-              name: "CHLOE XIAN",
-              group: "MOTHERBOARD"),
+              name: "CHLOE XIAN",),
         ],
       ),
     );

@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-final FirebaseFirestore firestore = FirebaseFirestore.instance;
+import 'package:tstory_app/main.dart';
 
 void addNewPost() {
   firestore.collection('posts').add({

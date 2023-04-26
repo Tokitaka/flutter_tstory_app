@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomPostListTile extends StatelessWidget {
-  final String headline, name, group, image;
+  final String headline, name, image;
 
   const CustomPostListTile(
       {super.key,
         required this.headline,
         required this.name,
-        required this.group,
         required this.image});
 
   @override
@@ -27,11 +26,6 @@ class CustomPostListTile extends StatelessWidget {
               children: [
                 Text(name),
                 const SizedBox(width: 5),
-                InkWell(
-                  onTap: () {},
-                  child: Text(group,
-                      style: const TextStyle(fontWeight: FontWeight.w700)),
-                ),
               ],
             ),
           );
