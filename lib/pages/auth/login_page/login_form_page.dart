@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/size.dart';
 import 'package:tstory_app/core/constants/theme.dart';
+import 'package:tstory_app/pages/auth/components/custom_form_button.dart';
 class LoginFormPage extends StatelessWidget {
   const LoginFormPage({Key? key}) : super(key: key);
 
@@ -58,14 +59,14 @@ class LoginFormPage extends StatelessWidget {
             SizedBox(
               height: mg_lg,
             ),
-            mybutton(
+            CustomFormButton(
                 text: "Continue with Apple",
                 route: "/joinForm",
                 icon: Icons.apple_outlined),
             SizedBox(
               height: mg_sm,
             ),
-            mybutton(
+            CustomFormButton(
                 text: "Continue with Facebook",
                 route: "/joinForm",
                 icon: Icons.facebook_outlined,
@@ -73,7 +74,7 @@ class LoginFormPage extends StatelessWidget {
             SizedBox(
               height: mg_sm,
             ),
-            mybutton(
+            CustomFormButton(
               text: "Continue with Google",
               route: "/joinForm",
               icon: Icons.g_mobiledata_outlined,
@@ -183,7 +184,7 @@ class LoginFormPage extends StatelessWidget {
             SizedBox(
               height: mg_md,
             ),
-            mybutton(
+            CustomFormButton(
               text: "Sign in with email",
               route: "/joinForm",
               buttonColor: Color(0xFF7F7F7F),
@@ -195,44 +196,3 @@ class LoginFormPage extends StatelessWidget {
   }
 }
 
-class mybutton extends StatelessWidget {
-  final route, text, icon, buttonColor;
-
-  const mybutton({
-    super.key,
-    required this.route,
-    required this.text,
-    this.icon,
-    this.buttonColor = Colors.black,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
-      style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(buttonColor),
-        minimumSize: MaterialStateProperty.all(
-          Size(350, 50),
-        ),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero,
-          ),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: Colors.white),
-          SizedBox(
-            width: 5,
-          ),
-          Text(text, style: TextStyle(color: Colors.white, fontSize: 20)),
-        ],
-      ),
-    );
-  }
-}
