@@ -20,3 +20,27 @@ Function validatePassword(){
     }
   };
 }
+
+Function validateEmail(){
+  return (String? value){
+    if(value!.isEmpty){
+      return "Please Enter email";
+    } else if (!isEmail(value)) {
+      return "Please Enter your email";
+    } else {
+      return null;
+    }
+  };
+}
+
+Function validateTitle(){
+  return (String? value){
+    if(value!.isEmpty){
+      return "Please Enter title";
+    } else if (value.length > 75) {
+      return "Cannot exceed 75 characters";
+    } else {
+      return null;
+    }
+  };
+}

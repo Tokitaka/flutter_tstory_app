@@ -1,15 +1,14 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tstory_app/cloud_firebase/cloud_storage.dart';
 import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/pages/post/list_page/home_page/for_you_page.dart';
 import 'package:tstory_app/pages/auth/join_page/join_form_page.dart';
 import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
+import 'package:tstory_app/pages/custom_components/custom_splash_screen.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';
 import 'package:tstory_app/pages/post/list_page/my_post_page/my_post_page.dart';
 import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
@@ -30,10 +29,6 @@ void main() async {
           messagingSenderId: "544532137880",
           projectId: "my-tstory-app"));
   // addNewUser();
-  List<String> downloadUrls = await uploadFiles(files);
-  print(downloadUrls);
-  print(storageRef);
-
   runApp(
     ProviderScope(
       child: MyApp(),
@@ -70,28 +65,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class SplashScreen extends StatefulWidget {
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => MyPostPage()));
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Image.asset("assets/logo.jpg"),
-      ),
-    );
-  }
-}
