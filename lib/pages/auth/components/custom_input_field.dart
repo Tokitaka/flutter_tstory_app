@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/theme.dart';
 
-class CustomInputField extends StatefulWidget {
-  final text;
+class CustomInputField extends StatelessWidget {
+  final hint;
+  final controller;
+  final funValidator;
 
   const CustomInputField({
-    super.key,
-    required this.text,
-  });
+    Key? key,
+    required this.hint,
+    this.controller,
+    required this.funValidator,
+  }) : super(key: key);
 
-  @override
-  State<CustomInputField> createState() => _CustomInputFieldState();
-}
-
-class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      validator: funValidator,
       decoration: InputDecoration(
-        hintText: widget.text,
+        hintText: hint,
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.zero,
           borderSide: BorderSide(
@@ -34,11 +35,6 @@ class _CustomInputFieldState extends State<CustomInputField> {
           ),
         ),
       ),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return "Please enter your${widget.text}";
-        }
-      },
       cursorColor: myGrey,
     );
   }
