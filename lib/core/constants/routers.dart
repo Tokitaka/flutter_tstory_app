@@ -1,6 +1,6 @@
 class Routers {
   static String home = "/home";
-  static String forYou = "/forYou";
+  static String myPost = "/myPost";
   static String scrapList = "/scrapList";
   static String myInfo = "/myInfo";
   static String search = "/search";

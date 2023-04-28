@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
       initialRoute: Routers.home,
       routes: {
         Routers.home: (context) => ForYouPage(),
-        Routers.forYou: (context) => const MyPostPage(),
+        Routers.myPost: (context) => const MyPostPage(),
         Routers.scrapList: (context) => const ScrapListPage(),
         Routers.myInfo: (context) => const MyInfoPage(),
         Routers.search: (context) => const SearchPage(),

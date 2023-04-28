@@ -80,6 +80,11 @@ class JoinForm extends ConsumerWidget {
                               .popAndPushNamed(Routers.loginForm),
                           child: Text("OK"),
                         ),
+                        TextButton(
+                          onPressed: () => Navigator.of(context)
+                              .popAndPushNamed(Routers.home),
+                          child: Text("Home"),
+                        ),
                       ],
                     ),
                   );
