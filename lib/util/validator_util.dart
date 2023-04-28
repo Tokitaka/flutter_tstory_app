@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
 Function validateUsername(){
   return (String? value){
@@ -16,17 +17,17 @@ Function validatePassword(){
     if (value!.isEmpty) {
       return "Please Enter password";
     } else {
-      return null;
+      return null; // return 하면 errorText 로 나온다
     }
   };
 }
 
-Function validatePasswordConfirm(password){
+Function validatePasswordConfirm(TextEditingController password){
   return (String? value){
     if (value!.isEmpty) {
       return "Please Enter password";
-    } else if (password != value) {
-      return "Passwords do not match";
+    } else if (password.text != value) {
+      return "Do not match passwords";
     } else {
       return null;
     }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:tstory_app/core/constants/http.dart';
 import 'package:tstory_app/dto/response_dto.dart';
@@ -34,13 +35,13 @@ class UserRepository {
   // }
   Future<ResponseDTO> fetchJoin(JoinReqDTO joinReqDTO) async {
     try {
-      Response response = await dio.post("/join", data: joinReqDTO.toJson());
-      ResponseDTO responseDTO =
-          ResponseDTO.fromJson(response.data); // data가 dynamic 타입
-      responseDTO.data = User.fromJson(responseDTO.data);
+      final data = joinReqDTO.toJson();
+      final result = await FirebaseFirestore.instance.collection("users").add(data);
+      final responseDTO = ResponseDTO(code: 1, msg: "success");
+      responseDTO.data = {'id' : result.id}; // 추가된 도큐먼트의 id ?
       return responseDTO;
     } catch (e) {
-      return ResponseDTO(code: -1, msg: "유저네임 중복");
+      return ResponseDTO(code: -1, msg: "Request failed please try again");
     }
   }
 

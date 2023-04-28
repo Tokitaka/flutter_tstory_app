@@ -61,14 +61,14 @@ class LoginFormPage extends StatelessWidget {
             ),
             CustomFormButton(
                 text: "Continue with Apple",
-                route: "/joinForm",
+
                 icon: Icons.apple_outlined),
             SizedBox(
               height: mg_sm,
             ),
             CustomFormButton(
                 text: "Continue with Facebook",
-                route: "/joinForm",
+
                 icon: Icons.facebook_outlined,
                 buttonColor: Color(0xFF445D91)),
             SizedBox(
@@ -76,7 +76,6 @@ class LoginFormPage extends StatelessWidget {
             ),
             CustomFormButton(
               text: "Continue with Google",
-              route: "/joinForm",
               icon: Icons.g_mobiledata_outlined,
               buttonColor: Color(0xFFC1634B),
             ),
@@ -186,7 +185,6 @@ class LoginFormPage extends StatelessWidget {
             ),
             CustomFormButton(
               text: "Sign in with email",
-              route: "/joinForm",
               buttonColor: Color(0xFF7F7F7F),
             ),
           ],

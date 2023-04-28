@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/theme.dart';
+import 'package:tstory_app/pages/auth/join_page/components/join_form.dart';
 import 'package:validators/validators.dart';
 
 class CustomInputField extends StatefulWidget {
@@ -9,10 +10,11 @@ class CustomInputField extends StatefulWidget {
   final isPassword;
 
   const CustomInputField({
-  Key? key,
-  required this.hint,
+    Key? key,
+    required this.hint,
     this.controller,
-    required this.funValidator, this.isPassword,
+    required this.funValidator,
+    this.isPassword,
   }) : super(key: key);
 
   @override
@@ -26,10 +28,11 @@ class _CustomInputFieldState extends State<CustomInputField> {
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: widget.isPassword ?? false,
-      onChanged: (value){
+      onChanged: (value) {
         if (widget.funValidator != null) {
           setState(() {
             _errorText = widget.funValidator(value);
+            widget.controller.text = value;
           });
         }
       },
@@ -57,5 +60,4 @@ class _CustomInputFieldState extends State<CustomInputField> {
     );
   }
 }
-
 

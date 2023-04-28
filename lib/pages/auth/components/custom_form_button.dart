@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class CustomFormButton extends StatelessWidget {
-  final route, text, icon, buttonColor;
+  final onPressed, text, icon, buttonColor;
 
   const CustomFormButton({
     super.key,
-    required this.route,
+    this.onPressed,
     required this.text,
     this.icon,
     this.buttonColor = Colors.black,
@@ -14,9 +14,7 @@ class CustomFormButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        Navigator.pop(context);
-      },
+      onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(buttonColor),
         minimumSize: MaterialStateProperty.all(

@@ -28,9 +28,10 @@ class UserController {
       ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("로그아웃 실패")));
     }
   }
-  Future<void> join(String username, String email, String password) async {
+  Future<ResponseDTO> join(String username, String email, String password) async {
     JoinReqDTO joinReqDTO = JoinReqDTO(username: username, email: email, password: password);
-    await UserRepository().fetchJoin(joinReqDTO);
+    final responseDTO = await UserRepository().fetchJoin(joinReqDTO);
+    return responseDTO;
   }
   Future<void> login(String email, String password) async {
     LoginReqDTO loginReqDTO = LoginReqDTO(email: email, password: password);
