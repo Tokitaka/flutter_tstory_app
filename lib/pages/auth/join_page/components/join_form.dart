@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tstory_app/core/constants/size.dart';
 import 'package:tstory_app/pages/auth/components/custom_input_field.dart';
 import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
 
-class JoinForm extends StatelessWidget {
-  const JoinForm({Key? key}) : super(key: key);
+class JoinForm extends ConsumerWidget {
+  final _formKey = GlobalKey<FormState>();
+
+
+
+  JoinForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Form(
         child: Column(
           children: [
