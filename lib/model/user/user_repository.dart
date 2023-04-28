@@ -19,9 +19,10 @@ class UserRepository {
   Future<ResponseDTO> fetchJoin(JoinReqDTO joinReqDTO) async {
     try {
       final data = joinReqDTO.toJson();
-      final result = await FirebaseFirestore.instance.collection("users").add(data);
+      final result =
+      await FirebaseFirestore.instance.collection("users").add(data);
       final responseDTO = ResponseDTO(code: 1, msg: "success");
-      responseDTO.data = {'id' : result.id}; // 추가된 도큐먼트의 id ?
+      responseDTO.data = {'id': result.id}; // 추가된 도큐먼트의 id ?
       return responseDTO;
     } catch (e) {
       return ResponseDTO(code: -1, msg: "Request failed please try again");
@@ -30,19 +31,21 @@ class UserRepository {
 
   Future<ResponseDTO> fetchLogin(LoginReqDTO loginReqDTO) async {
     try {
-      final result = await FirebaseFirestore.instance.collection('users')
+      QuerySnapshot result = await FirebaseFirestore.instance
+          .collection('users')
           .where('email', isEqualTo: loginReqDTO.email)
           .where('password', isEqualTo: loginReqDTO.password)
           .get();
-      if (result.docs.isEmpty) {
-        return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");
+      if (result.docs.isNotEmpty) {
+        final doc = result.docs.first;
+        // doc id를 token 으로 저장
+        final token = doc.id;
+        return ResponseDTO(code: 1, msg: "로그인 성공", data: token);
       } else {
-       final doc = result.docs.first;
-       final token = doc.get('token');
-       return ResponseDTO(code: 0, msg: "로그인 성공", data: token);
+        return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");
       }
     } catch (e) {
-      return ResponseDTO(code: -1, msg: "유저네임 혹은 비번이 틀렸습니다");
+      return ResponseDTO(code: -1, msg: "로그인 중 오류 발생");
     }
   }
 }

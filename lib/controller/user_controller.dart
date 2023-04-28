@@ -33,19 +33,23 @@ class UserController {
     final responseDTO = await UserRepository().fetchJoin(joinReqDTO);
     return responseDTO;
   }
+
   Future<ResponseDTO> login(String email, String password) async {
     LoginReqDTO loginReqDTO = LoginReqDTO(email: email, password: password);
-    // 파싱은 repository의 역할 - loginReqDTO를 그대로 넘겨준다.
     final responseDTO = await UserRepository().fetchLogin(loginReqDTO);
-    // responseDTO의 검증은 controller 몫
-    if(responseDTO.code != -1){
-    // repository에서 담은 token을 secureStorage에 담아준다
-    await secureStorage.write(key: "jwt", value: responseDTO.token);
-    // 로그인된 상태를, loginSuccess()를 통해 등록해준다
-    ref.read(sessionProvider).loginSuccess(responseDTO.data, responseDTO.token!);
-    return responseDTO;
-    } else {
-      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("로그인 실패 : ${responseDTO.msg}")));
+    if(responseDTO.code == 1){
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("로그인 성공 : ${responseDTO.msg}")));
+      return responseDTO;
+    }
+
+    final savedToken = await secureStorage.read(key: "jwt");
+    if (savedToken != null && savedToken == responseDTO.token) {
+      ref.read(sessionProvider).loginSuccess(responseDTO.data, responseDTO.token!);
+      return responseDTO;
+    }
+    else {
+      ScaffoldMessenger.of(mContext!).showSnackBar(SnackBar(content: Text("로그인 정보가 일치하지 않습니다.")));
+      return ResponseDTO(code: 1, msg: "로그인 정보가 일치하지 않습니다.");
     }
   }
 }
