@@ -10,6 +10,7 @@ class JoinForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
   final _username = TextEditingController();
   final _password = TextEditingController();
+  final _confirmPassword = TextEditingController();
   final _email = TextEditingController();
 
 
@@ -47,7 +48,7 @@ class JoinForm extends ConsumerWidget {
           CustomInputField(
               isPassword: true,
               hint: "Confirm password",
-              controller: _password,
+              controller: _confirmPassword,
               funValidator: validatePassword()),
           SizedBox(
             height: mg_sm,
