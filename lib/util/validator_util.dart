@@ -21,6 +21,18 @@ Function validatePassword(){
   };
 }
 
+Function validatePasswordConfirm(password){
+  return (String? value){
+    if (value!.isEmpty) {
+      return "Please Enter password";
+    } else if (password != value) {
+      return "Passwords do not match";
+    } else {
+      return null;
+    }
+  };
+}
+
 Function validateEmail(){
   return (String? value){
     if(value!.isEmpty){

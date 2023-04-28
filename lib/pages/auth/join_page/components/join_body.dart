@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/core/constants/size.dart';
-import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
 
 class JoinBody extends StatelessWidget {
   const JoinBody({Key? key}) : super(key: key);

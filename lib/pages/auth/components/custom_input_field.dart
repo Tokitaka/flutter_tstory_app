@@ -9,8 +9,8 @@ class CustomInputField extends StatefulWidget {
   final isPassword;
 
   const CustomInputField({
-    Key? key,
-    required this.hint,
+  Key? key,
+  required this.hint,
     this.controller,
     required this.funValidator, this.isPassword,
   }) : super(key: key);
