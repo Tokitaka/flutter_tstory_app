@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tstory_app/core/constants/size.dart';
+import 'package:tstory_app/core/constants/theme.dart';
 import 'package:tstory_app/pages/auth/components/custom_input_field.dart';
 import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
 import 'package:tstory_app/util/validator_util.dart';
@@ -10,6 +11,7 @@ class JoinForm extends ConsumerWidget {
   final _username = TextEditingController();
   final _password = TextEditingController();
   final _email = TextEditingController();
+
 
   JoinForm({Key? key}) : super(key: key);
 
@@ -22,7 +24,8 @@ class JoinForm extends ConsumerWidget {
           CustomInputField(
               hint: "Your name",
               controller: _username,
-              funValidator: validateUsername()),
+              funValidator: validateUsername(),
+          ),
           SizedBox(
             height: mg_sm,
           ),
@@ -34,6 +37,7 @@ class JoinForm extends ConsumerWidget {
             height: mg_sm,
           ),
           CustomInputField(
+              isPassword: true,
               hint: "Pick a password",
               controller: _password,
               funValidator: validatePassword()),
@@ -41,6 +45,7 @@ class JoinForm extends ConsumerWidget {
             height: mg_sm,
           ),
           CustomInputField(
+              isPassword: true,
               hint: "Confirm password",
               controller: _password,
               funValidator: validatePassword()),
@@ -54,6 +59,45 @@ class JoinForm extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+
+class _CustomInputFieldState extends State<CustomInputField> {
+  String? _errorText;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      onChanged: (value){
+        if (widget.funValidator != null) {
+          setState(() {
+            _errorText = widget.funValidator(value);
+          });
+        }
+      },
+      controller: widget.controller,
+      validator: widget.funValidator,
+      decoration: InputDecoration(
+        hintText: widget.hint,
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.zero,
+          borderSide: BorderSide(
+            color: myGrey,
+            style: BorderStyle.solid,
+          ),
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.zero,
+          borderSide: BorderSide(
+            color: myGrey,
+            style: BorderStyle.solid,
+          ),
+        ),
+        errorText: _errorText,
+      ),
+      cursorColor: myGrey,
     );
   }
 }

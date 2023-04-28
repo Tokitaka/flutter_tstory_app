@@ -26,7 +26,7 @@ Function validateEmail(){
     if(value!.isEmpty){
       return "Please Enter email";
     } else if (!isEmail(value)) {
-      return "Please Enter your email";
+      return "Please Enter a valid email address";
     } else {
       return null;
     }
