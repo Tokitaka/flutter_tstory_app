@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
+import 'package:tstory_app/controller/user_controller.dart';
+import 'package:tstory_app/core/constants/routers.dart';
+import 'package:tstory_app/pages/custom_components/custom_botton_navigation_bar.dart';
 import 'package:tstory_app/pages/custom_components/custom_appbar_1st.dart';
 import 'package:tstory_app/pages/custom_components/custom_post_list_tile.dart';
 import 'package:tstory_app/pages/custom_components/custom_recommendation_card.dart';
@@ -31,12 +34,15 @@ class ForYouPage extends ConsumerWidget {
             ),
           ),
           CustomPostListTile(
-              image: "matrix2.jpg",
-              headline:
-                  "AL TASKED WITH 'DESTROYING HUMANITY 'NOW WORKING ON CONTROL",
-              name: "CHLOE XIAN",),
+            image: "matrix2.jpg",
+            headline:
+                "AL TASKED WITH 'DESTROYING HUMANITY 'NOW WORKING ON CONTROL",
+            name: "CHLOE XIAN",
+          ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(ref: ref),
     );
   }
 }
+

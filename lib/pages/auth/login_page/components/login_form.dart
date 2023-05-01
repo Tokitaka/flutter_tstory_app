@@ -14,6 +14,7 @@ class LoginForm extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
   final _password = TextEditingController();
   final _email = TextEditingController();
+
   LoginForm({
     super.key,
   });
@@ -27,7 +28,6 @@ class LoginForm extends ConsumerWidget {
           CustomInputField(
             hint: "Email Address",
             controller: _email,
-            funValidator: validateEmail(),
           ),
           SizedBox(
             height: mg_sm,
@@ -38,7 +38,6 @@ class LoginForm extends ConsumerWidget {
                 isPassword: true,
                 hint: "Password",
                 controller: _password,
-                funValidator: validatePassword(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,8 +56,7 @@ class LoginForm extends ConsumerWidget {
                             fontWeight: FontWeight.bold),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.pushReplacementNamed(
-                                context, "/home");
+                            Navigator.pushReplacementNamed(context, "/home");
                           },
                       ),
                     ),
@@ -71,33 +69,18 @@ class LoginForm extends ConsumerWidget {
             height: mg_md,
           ),
           CustomFormButton(
-            text: "Sign in with email",
-            buttonColor: Color(0xFF7F7F7F),
-            onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                final responseDTO = await ref.read(userControllerProvider).login(
-                    _password.text.trim(),
-                    _email.text.trim());
-                if (responseDTO.code == 1) {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text("Success"),
-                      content:
-                      Text("You're logged in successfully!"),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context)
-                              .popAndPushNamed(Routers.home),
-                          child: Text("OK"),
-                        ),
-                      ],
-                    ),
-                  );
+              text: "Sign in with email",
+              buttonColor: Color(0xFF7F7F7F),
+              onPressed: () async {
+                final userController = ref.read(userControllerProvider);
+                final emailError = validateEmail(_email.text.trim());
+                if (emailError != null) {
+                  ScaffoldMessenger.of(context)
+                      .showSnackBar(SnackBar(content: Text(_email.text.trim())));
                 }
+                userController.login( _email.text.trim(), _password.text.trim());
               }
-            },
-          ),
+              ),
         ],
       ),
     );

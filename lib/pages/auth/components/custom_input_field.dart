@@ -6,14 +6,12 @@ import 'package:validators/validators.dart';
 class CustomInputField extends StatefulWidget {
   final hint;
   final controller;
-  final funValidator;
   final isPassword;
 
   const CustomInputField({
     Key? key,
     required this.hint,
     this.controller,
-    required this.funValidator,
     this.isPassword,
   }) : super(key: key);
 
@@ -29,15 +27,12 @@ class _CustomInputFieldState extends State<CustomInputField> {
     return TextFormField(
       obscureText: widget.isPassword ?? false,
       onChanged: (value) {
-        if (widget.funValidator != null) {
           setState(() {
-            _errorText = widget.funValidator(value);
             widget.controller.text = value;
           });
-        }
       },
       controller: widget.controller,
-      validator: widget.funValidator,
+
       decoration: InputDecoration(
         hintText: widget.hint,
         focusedBorder: OutlineInputBorder(

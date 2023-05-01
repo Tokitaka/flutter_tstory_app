@@ -9,20 +9,13 @@ class PostHomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.white,
+      toolbarHeight: 0,
       flexibleSpace: FlexibleSpaceBar(
         background: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            children: [
-              CustomAppbar2rdMenu(
-                text: "FOR YOU",
-                route: "/foryou",
-              ),
-              CustomAppbar2rdMenu(text: "MY POST", route: "/home"),
-              CustomAppbar2rdMenu(text: "WRITE", route: "/write"),
-              CustomAppbar2rdMenu(text: "NULL", route: "/fillout"),
-            ],
-          ),
+          child: CustomAppbar2rdMenu(),
         ),
       ),
     );

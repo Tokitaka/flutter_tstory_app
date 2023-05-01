@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/routers.dart';
-import 'package:tstory_app/core/constants/secure_storage.dart';
+import 'package:tstory_app/main.dart';
 import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
-import 'package:tstory_app/pages/post/search_page/search_page.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';
 
 PreferredSizeWidget custom_appbar_1st(context) {
   return AppBar(
     backgroundColor: Colors.black,
-    leading: SecureStorage.hasToken
+    leading: idToken != null
         ? Row(
             children: [
               Expanded(

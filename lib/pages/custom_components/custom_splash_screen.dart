@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tstory_app/pages/post/list_page/my_post_page/my_post_page.dart';
+import 'package:tstory_app/core/constants/routers.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,8 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => MyPostPage()));
+      Navigator.pushNamed(context, Routers.home);
     });
   }
 

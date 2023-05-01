@@ -1,10 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dio/dio.dart';
-import 'package:tstory_app/core/constants/http.dart';
 import 'package:tstory_app/dto/response_dto.dart';
 import 'package:tstory_app/dto/user_request.dart';
-import 'package:tstory_app/model/user/user.dart';
-import 'package:tstory_app/provider/session_provider.dart';
+
 
 // 역할 : 통신 + 파싱
 class UserRepository {

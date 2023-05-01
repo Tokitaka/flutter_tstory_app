@@ -24,26 +24,20 @@ class JoinForm extends ConsumerWidget {
       key: _formKey,
       child: Column(
         children: [
+          SizedBox(
+            height: mg_sm,
+          ),
           CustomInputField(
-            hint: "Your name",
-            controller: _username,
-            funValidator: validateUsername(),
+            hint: "Email address",
+            controller: _email,
           ),
           SizedBox(
             height: mg_sm,
           ),
           CustomInputField(
-              hint: "Email address",
-              controller: _email,
-              funValidator: validateEmail()),
-          SizedBox(
-            height: mg_sm,
-          ),
-          CustomInputField(
-              isPassword: true,
-              hint: "Pick a password",
-              controller: _password,
-              funValidator: validatePassword(),
+            isPassword: true,
+            hint: "Pick a password",
+            controller: _password,
           ),
           SizedBox(
             height: mg_sm,
@@ -52,7 +46,6 @@ class JoinForm extends ConsumerWidget {
             isPassword: true,
             hint: "Confirm password",
             controller: _confirmPassword,
-            funValidator: validatePasswordConfirm(_password),
           ),
           SizedBox(
             height: mg_sm,
@@ -61,35 +54,8 @@ class JoinForm extends ConsumerWidget {
             text: "Create Account",
             buttonColor: Color(0xFF7F7F7F),
             onPressed: () async {
-              if (_formKey.currentState!.validate()) {
-                final responseDTO = await ref.read(userControllerProvider).join(
-                    _username.text.trim(),
-                    _password.text.trim(),
-                    _email.text.trim());
-                print("username+${_username.text.trim()}");
-                if (responseDTO.code == 1) {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      title: Text("Success"),
-                      content:
-                          Text("Your account has been created successfully!"),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.of(context)
-                              .popAndPushNamed(Routers.loginForm),
-                          child: Text("OK"),
-                        ),
-                        TextButton(
-                          onPressed: () => Navigator.of(context)
-                              .popAndPushNamed(Routers.home),
-                          child: Text("Home"),
-                        ),
-                      ],
-                    ),
-                  );
-                }
-              }
+              final userController = await ref.read(userControllerProvider);
+              userController.join(_email.text.trim(), _password.text.trim());
             },
           ),
         ],
@@ -97,4 +63,3 @@ class JoinForm extends ConsumerWidget {
     );
   }
 }
-

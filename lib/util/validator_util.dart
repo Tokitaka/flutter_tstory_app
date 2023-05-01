@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:validators/validators.dart';
-Function validateUsername(){
-  return (String? value){
+
+Function validateUsername() {
+  return (String? value) {
     if (value!.isEmpty) {
       return "Please Enter username";
     } else if (!isAlphanumeric(value)) {
@@ -12,8 +13,8 @@ Function validateUsername(){
   };
 }
 
-Function validatePassword(){
-  return (String? value){
+Function validatePassword() {
+  return (String? value) {
     if (value!.isEmpty) {
       return "Please Enter password";
     } else {
@@ -22,8 +23,8 @@ Function validatePassword(){
   };
 }
 
-Function validatePasswordConfirm(TextEditingController password){
-  return (String? value){
+Function validatePasswordConfirm(TextEditingController password) {
+  return (String? value) {
     if (value!.isEmpty) {
       return "Please Enter password";
     } else if (password.text != value) {
@@ -34,21 +35,19 @@ Function validatePasswordConfirm(TextEditingController password){
   };
 }
 
-Function validateEmail(){
-  return (String? value){
-    if(value!.isEmpty){
-      return "Please Enter email";
-    } else if (!isEmail(value)) {
-      return "Please Enter a valid email address";
-    } else {
-      return null;
-    }
-  };
+String? validateEmail(String? value) {
+  if (value!.isEmpty) {
+    return "Please Enter email";
+  } else if (!isEmail(value)) {
+    return "Please Enter a valid email address";
+  } else {
+    return null;
+  }
 }
 
-Function validateTitle(){
-  return (String? value){
-    if(value!.isEmpty){
+Function validateTitle() {
+  return (String? value) {
+    if (value!.isEmpty) {
       return "Please Enter title";
     } else if (value.length > 75) {
       return "Cannot exceed 75 characters";
