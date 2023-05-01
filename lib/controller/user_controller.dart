@@ -21,6 +21,8 @@ class UserController {
       await FirebaseAuth.instance.signOut();
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Routers.home, (route) => false);
+      ScaffoldMessenger.of(mContext!)
+          .showSnackBar(SnackBar(content: Text('Successfully logged out')));
     } catch (e) {
       ScaffoldMessenger.of(mContext!)
           .showSnackBar(SnackBar(content: Text('Failed to sign out: $e')));

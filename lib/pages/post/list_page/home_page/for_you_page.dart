@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
-import 'package:tstory_app/controller/user_controller.dart';
-import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/pages/custom_components/custom_botton_navigation_bar.dart';
 import 'package:tstory_app/pages/custom_components/custom_appbar_1st.dart';
 import 'package:tstory_app/pages/custom_components/custom_post_list_tile.dart';
 import 'package:tstory_app/pages/custom_components/custom_recommendation_card.dart';
 import 'package:tstory_app/pages/post/list_page/home_page/components/post_home_body.dart';
+import 'package:tstory_app/pages/post/list_page/home_page/for_you_page_view_model.dart';
 
 // 창고 데이터를 구독
 class ForYouPage extends ConsumerWidget {
@@ -16,6 +15,8 @@ class ForYouPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final posts = ref.watch(forYouPageProvider).posts;
+    print("post개수${posts.length}");
     Logger().d("foryou 페이지 빌드");
     return Scaffold(
       appBar: custom_appbar_1st(context),
@@ -33,11 +34,33 @@ class ForYouPage extends ConsumerWidget {
               height: 18,
             ),
           ),
-          CustomPostListTile(
-            image: "matrix2.jpg",
-            headline:
-                "AL TASKED WITH 'DESTROYING HUMANITY 'NOW WORKING ON CONTROL",
-            name: "CHLOE XIAN",
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                final post = posts[index];
+                return ListTile(
+                  leading: Image.asset("assets/matrix.jpg"),
+                  title: TextButton(
+                      child: Text(
+                        post.title ?? "No title",
+                        style: const TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      onPressed: () {}),
+                  subtitle: Wrap(
+                    children: [
+                      Text(
+                        post.title ?? "No title",
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      const SizedBox(width: 5),
+                    ],
+                  ),
+                );
+              },
+              childCount: posts.length,
+            ),
           ),
         ],
       ),
@@ -45,4 +68,3 @@ class ForYouPage extends ConsumerWidget {
     );
   }
 }
-

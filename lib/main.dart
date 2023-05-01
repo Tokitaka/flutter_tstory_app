@@ -35,7 +35,7 @@ void main() async {
 }
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
-final idToken = FirebaseAuth.instance.currentUser!.getIdToken();
+final idToken = FirebaseAuth.instance.currentUser?.getIdToken();
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {

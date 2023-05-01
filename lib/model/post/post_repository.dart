@@ -18,8 +18,8 @@ class PostRepository {
       Response response = await dio.get("/post");
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       List<dynamic> mapList = responseDTO.data as List<dynamic>;
-      List<Post> postList = mapList.map((e) => Post.fromJson(e)).toList();
-      responseDTO.data = postList;
+      // List<Post> postList = mapList.map((e) => Post.fromJson(e)).toList();
+      // responseDTO.data = postList;
       return responseDTO;
     } catch (e) {
       return ResponseDTO(code: -1, msg: "실패", data: e);
@@ -32,8 +32,8 @@ class PostRepository {
           options: Options(headers: {'Authorization': jwt}));
       ResponseDTO responseDTO = ResponseDTO.fromJson(response.data);
       List<dynamic> mapList = responseDTO.data as List<dynamic>;
-      List<Post> postList = mapList.map((e) => Post.fromJson(e)).toList();
-      responseDTO.data = postList;
+      // List<Post> postList = mapList.map((e) => Post.fromJson(e)).toList();
+      // responseDTO.data = postList;
       return responseDTO;
     } catch (e) {
       return ResponseDTO(code: -1, msg: "실패", data: e);

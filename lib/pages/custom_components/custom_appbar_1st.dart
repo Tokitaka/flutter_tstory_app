@@ -16,19 +16,6 @@ PreferredSizeWidget custom_appbar_1st(context) {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const MyInfoPage()),
-                    );
-                  },
-                  icon: const Icon(Icons.account_circle_rounded,
-                      color: Colors.white),
-                ),
-              ),
-              Expanded(
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
                           builder: (context) => const ScrapListPage()),
                     );
                   },
@@ -40,11 +27,12 @@ PreferredSizeWidget custom_appbar_1st(context) {
         : Row(
             children: [
               Expanded(
-                child: IconButton(
+                child: TextButton(
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.green)),
                   onPressed: () {
-                    Navigator.pushNamed(context, Routers.scrapList);
+                    Navigator.pushNamed(context, Routers.loginForm);
                   },
-                  icon: const Icon(Icons.save, color: Colors.white),
+                  child: Text("Login", style: TextStyle(color: Colors.white, fontSize: 14)),
                 ),
               ),
             ],
