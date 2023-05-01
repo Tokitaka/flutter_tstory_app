@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tstory_app/core/constants/http.dart';
 import 'package:tstory_app/core/constants/routers.dart';
+import 'package:tstory_app/core/constants/secure_storage.dart';
 import 'package:tstory_app/dto/response_dto.dart';
 import 'package:tstory_app/dto/user_request.dart';
 import 'package:tstory_app/main.dart';
@@ -42,7 +43,7 @@ class UserController {
       return responseDTO;
     }
 
-    final savedToken = await secureStorage.read(key: "jwt");
+    final savedToken = await SecureStorage.readToken();
     if (savedToken != null && savedToken == responseDTO.token) {
       ref.read(sessionProvider).loginSuccess(responseDTO.data, responseDTO.token!);
       return responseDTO;
