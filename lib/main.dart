@@ -28,6 +28,7 @@ void main() async {
           appId: "1:544532137880:android:6dad87119343b0271f4ded",
           messagingSenderId: "544532137880",
           projectId: "my-tstory-app"));
+  await SecureStorage.
   // addNewUser();
   runApp(
     ProviderScope(

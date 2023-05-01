@@ -22,7 +22,7 @@ class UserRepository {
       final result =
       await FirebaseFirestore.instance.collection("users").add(data);
       final responseDTO = ResponseDTO(code: 1, msg: "success");
-      responseDTO.data = {'id': result.id}; // 추가된 도큐먼트의 id ?
+      responseDTO.data = {'id': result.id};
       return responseDTO;
     } catch (e) {
       return ResponseDTO(code: -1, msg: "Request failed please try again");
