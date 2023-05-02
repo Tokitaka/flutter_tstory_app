@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
-import 'package:tstory_app/model/user/user.dart';
+import 'package:logger/logger.dart';
 
 class Post {
+
   String? id;
   String? title;
   String? content;
-  User? user;
+  Map<String, dynamic>? user;
 
   Post({
     this.id,
@@ -16,10 +16,12 @@ class Post {
   });
 
   factory Post.fromSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data() as Map<String, dynamic>;
     return Post(
       id: snapshot.id,
-      title: snapshot.get('title'),
-      content: snapshot.get('content'),
+      title: data['title'],
+      content: data['content'],
+      user: data['user'],
     );
   }
 }

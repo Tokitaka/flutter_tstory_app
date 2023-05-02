@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:tstory_app/pages/custom_components/custom_botton_navigation_bar.dart';
 import 'package:tstory_app/pages/custom_components/custom_appbar_1st.dart';
-import 'package:tstory_app/pages/custom_components/custom_post_list_tile.dart';
 import 'package:tstory_app/pages/custom_components/custom_recommendation_card.dart';
 import 'package:tstory_app/pages/post/list_page/home_page/components/post_home_body.dart';
 import 'package:tstory_app/pages/post/list_page/home_page/for_you_page_view_model.dart';
@@ -16,7 +15,6 @@ class ForYouPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(forYouPageProvider).posts;
-    print("post개수${posts.length}");
     Logger().d("foryou 페이지 빌드");
     return Scaffold(
       appBar: custom_appbar_1st(context),
@@ -46,17 +44,20 @@ class ForYouPage extends ConsumerWidget {
                         style: const TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                         overflow: TextOverflow.ellipsis,
+                        maxLines: 4,
                       ),
                       onPressed: () {}),
-                  subtitle: Wrap(
-                    children: [
-                      Text(
-                        post.title ?? "No title",
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(width: 5),
-                    ],
-                  ),
+                  subtitle: post.user != null && post.user?['username'] != null
+                      ? Wrap(
+                          children: [
+                            Text(
+                              post.user?['username'] as String,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            const SizedBox(width: 5),
+                          ],
+                        )
+                      : Text(""),
                 );
               },
               childCount: posts.length,

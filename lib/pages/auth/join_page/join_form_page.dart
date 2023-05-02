@@ -12,7 +12,7 @@ class JoinFormPage extends StatelessWidget {
     Logger().d("joinpage 그려짐");
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      appBar: custom_arrow_appbar(text: "Create Account"),
+      appBar: CustomArrowAppbar(text: "Create Account"),
       body: Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
     child: SingleChildScrollView(

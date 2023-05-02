@@ -10,7 +10,7 @@ class ScrapListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: custom_arrow_appbar(text: "Bookmarked"),
+      appBar: CustomArrowAppbar(text: "Bookmarked"),
       body: Padding(
         padding: myhorizontalpd,
         child: Column(

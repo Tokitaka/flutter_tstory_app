@@ -9,7 +9,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: custom_arrow_appbar(text: "Search"),
+      appBar: CustomArrowAppbar(text: "Search"),
       body: TextField(
         decoration: InputDecoration(
           hintText: 'Search for anything',

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class custom_arrow_appbar extends StatelessWidget implements PreferredSizeWidget{
+class CustomArrowAppbar extends StatelessWidget implements PreferredSizeWidget{
   final text;
-  const custom_arrow_appbar({
+  const CustomArrowAppbar({
     required this.text,
   });
 
