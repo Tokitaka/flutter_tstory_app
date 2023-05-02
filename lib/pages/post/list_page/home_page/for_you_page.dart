@@ -1,6 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:logger/logger.dart';
+import 'package:tstory_app/core/constants/http.dart';
 import 'package:tstory_app/pages/custom_components/custom_botton_navigation_bar.dart';
 import 'package:tstory_app/pages/custom_components/custom_appbar_1st.dart';
 import 'package:tstory_app/pages/custom_components/custom_recommendation_card.dart';
@@ -15,7 +17,6 @@ class ForYouPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final posts = ref.watch(forYouPageProvider).posts;
-    Logger().d("foryou 페이지 빌드");
     return Scaffold(
       appBar: custom_appbar_1st(context),
       body: CustomScrollView(
@@ -37,7 +38,18 @@ class ForYouPage extends ConsumerWidget {
               (context, index) {
                 final post = posts[index];
                 return ListTile(
-                  leading: Image.asset("assets/matrix.jpg"),
+                  leading: FutureBuilder<Uint8List>(
+                  future: fetchImage(),
+                builder: (context, snapshot){
+                    if(snapshot.hasData){
+                      return Image.memory(snapshot.data!, fit: BoxFit.cover);
+                    } return SizedBox(
+                      height: 30,
+                      width: 30,
+                      child: CircularProgressIndicator(),
+                    );
+                }
+                ),
                   title: TextButton(
                       child: Text(
                         post.title ?? "No title",

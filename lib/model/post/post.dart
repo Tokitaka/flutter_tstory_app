@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:logger/logger.dart';
+
 
 class Post {
 
@@ -16,6 +16,7 @@ class Post {
   });
 
   factory Post.fromSnapshot(DocumentSnapshot snapshot) {
+    // print("fromSnapshot 빌드됨");
     final data = snapshot.data() as Map<String, dynamic>;
     return Post(
       id: snapshot.id,
