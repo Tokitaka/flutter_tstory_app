@@ -48,6 +48,7 @@ class UserController {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      currentUser = userCredential.user;
       Navigator.pushReplacementNamed(mContext!, Routers.home);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

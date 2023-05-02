@@ -7,7 +7,7 @@ import 'package:tstory_app/main.dart';
 class CustomAppbar2rdMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    if (idToken != null) {
+    if (currentUser != null) {
       return Container(
         width: getScreenWidth(context),
         height: 60.0,

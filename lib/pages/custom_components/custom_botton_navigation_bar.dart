@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tstory_app/core/constants/routers.dart';
+import 'package:tstory_app/main.dart';
 
 import '../../controller/user_controller.dart';
 
@@ -30,10 +31,18 @@ class CustomBottomNavigationBar extends StatelessWidget {
             Navigator.pushNamed(context, Routers.home);
             break;
           case 1:
-            Navigator.pushNamed(context, Routers.myInfo);
+            if(currentUser != null){
+              Navigator.pushNamed(context, Routers.myInfo);
+            } else {
+              Navigator.pushNamed(context, Routers.loginForm);
+            }
             break;
           case 2:
-            Navigator.pushNamed(context, Routers.writePost);
+            if(currentUser != null){
+              Navigator.pushNamed(context, Routers.writePost);
+            } else {
+              Navigator.pushNamed(context, Routers.loginForm);
+            }
             break;
           case 3:
             Navigator.pushNamed(context, Routers.search);

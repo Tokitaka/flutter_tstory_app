@@ -7,7 +7,7 @@ import 'package:tstory_app/pages/user/my_info_page.dart';
 PreferredSizeWidget custom_appbar_1st(context) {
   return AppBar(
     backgroundColor: Colors.black,
-    leading: idToken != null
+    leading: currentUser != null
         ? Row(
             children: [
               Expanded(

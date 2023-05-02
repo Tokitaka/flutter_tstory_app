@@ -16,7 +16,6 @@ import 'package:tstory_app/pages/post/list_page/my_post_page/my_post_page.dart';
 import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
 import 'package:tstory_app/pages/post/search_page/search_page.dart';
 import 'package:tstory_app/pages/post/write_page/write_page.dart';
-import 'package:tstory_app/pages/user/my_info_page_view_model.dart';
 
 void main() async {
   // firebase 초기화
@@ -36,7 +35,7 @@ void main() async {
 }
 
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
-final idToken = FirebaseAuth.instance.currentUser?.getIdToken();
+User? currentUser = FirebaseAuth.instance.currentUser;
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
