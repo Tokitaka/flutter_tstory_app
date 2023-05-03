@@ -21,11 +21,13 @@ void addNewPost(String title, content) {
           context: mContext,
           builder: (mContext) => AlertDialog(
             title: Text('Success'),
-            content: Text('New document added: ${value.id}'),
+            content: Text('New document added'),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(mContext, Routers.myPost),
-                child: Text('Go to my post'),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(mContext, Routers.writePost);
+                },
+                child: Text('OK'),
               )
             ],
           ),
@@ -39,14 +41,16 @@ void addNewPost(String title, content) {
             content: Text('Error adding document:$error'),
             actions: [
               TextButton(
-                onPressed: () => Navigator.pop(mContext, Routers.myPost),
-                child: Text('Go to my post'),
-              )
+                onPressed: () {
+                  Navigator.pushReplacementNamed(mContext, Routers.writePost);
+                },
+                child: Text('OK'),
+              ),
             ],
           ),
         ),
       );
-    }
+}
 
 // ScaffoldMessenger.of(context)
 //     .showSnackBar(SnackBar(content: Text(_email.text.trim())));
