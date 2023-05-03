@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
         Routers.search: (context) => SearchPage(),
         Routers.loginForm: (context) => const LoginFormPage(),
         Routers.joinForm: (context) => const JoinFormPage(),
-        Routers.writePost: (context) => const WritePage(),
+        Routers.writePost: (context) => WritePage(),
       },
     );
   }

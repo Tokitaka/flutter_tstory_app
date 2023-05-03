@@ -52,7 +52,7 @@ class SearchPage extends ConsumerWidget {
                 final post = posts[index];
                 return ListTile(
                   title: Text(post.title ?? ""),
-                  subtitle: Text(post.content ?? ""),
+                  subtitle: Text(post.content ?? "", maxLines: 10),
                 );
               },
             ),
