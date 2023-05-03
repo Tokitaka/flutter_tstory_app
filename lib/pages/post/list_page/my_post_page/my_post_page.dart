@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tstory_app/pages/custom_components/custom_appbar_1st.dart';
 import 'package:tstory_app/pages/custom_components/custom_appbar_2rd_menu.dart';
 import 'package:tstory_app/pages/custom_components/custom_post_list_tile.dart';
-import 'package:tstory_app/pages/user/my_info_page.dart';
-import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';
-import 'package:tstory_app/pages/post/search_page/search_page.dart';
+
 
 class MyPostPage extends StatefulWidget {
   const MyPostPage({super.key});
@@ -16,7 +14,6 @@ class MyPostPage extends StatefulWidget {
 class _MyPostPageState extends State<MyPostPage> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: custom_appbar_1st(context),
       body: CustomScrollView(

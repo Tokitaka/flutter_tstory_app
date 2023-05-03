@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:tstory_app/core/constants/size.dart';
+import 'package:logger/logger.dart';
+import 'package:tstory_app/cloud_firebase/cloud_firestore.dart';
 import 'package:tstory_app/core/constants/theme.dart';
 
 class WritePage extends StatelessWidget {
@@ -58,9 +61,14 @@ class WritePage extends StatelessWidget {
               ),
               SizedBox(height: 10),
               TextButton(
-                onPressed: () {},
-                child: Text("Send",
-                    style: TextStyle(fontSize: 30, color: Colors.green)),
+                onPressed: () {
+                  addNewPost(
+                      _titleWriteController.text, _contentWriteController.text);
+                },
+                child: Text(
+                  "Send",
+                  style: TextStyle(fontSize: 30, color: Colors.green),
+                ),
               ),
             ],
           ),
