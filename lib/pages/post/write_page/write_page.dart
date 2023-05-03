@@ -3,10 +3,17 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:tstory_app/cloud_firebase/cloud_firestore.dart';
+import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/core/constants/theme.dart';
 
-class WritePage extends StatelessWidget {
+class WritePage extends StatefulWidget {
   WritePage({Key? key}) : super(key: key);
+
+  @override
+  State<WritePage> createState() => _WritePageState();
+}
+
+class _WritePageState extends State<WritePage> {
   final TextEditingController _titleWriteController = TextEditingController();
   final TextEditingController _contentWriteController = TextEditingController();
 

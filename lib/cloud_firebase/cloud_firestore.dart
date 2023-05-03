@@ -4,6 +4,7 @@ import 'package:tstory_app/main.dart';
 
 void addNewPost(String title, content) {
   final mContext = navigatorKey.currentContext!;
+  final cState = navigatorKey.currentState!;
 
   Map<String, dynamic> user = {
     'email': currentUser!.email,
@@ -19,13 +20,13 @@ void addNewPost(String title, content) {
       .then(
         (value) => showDialog(
           context: mContext,
-          builder: (mContext) => AlertDialog(
+          builder: (context) => AlertDialog(
             title: Text('Success'),
             content: Text('New document added'),
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(mContext, Routers.writePost);
+                  cState.pushReplacementNamed(Routers.writePost);
                 },
                 child: Text('OK'),
               )
@@ -36,13 +37,13 @@ void addNewPost(String title, content) {
       .catchError(
         (error) => showDialog(
           context: mContext,
-          builder: (mContext) => AlertDialog(
+          builder: (context) => AlertDialog(
             title: Text('Success'),
             content: Text('Error adding document:$error'),
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(mContext, Routers.writePost);
+                  cState.pushReplacementNamed(Routers.writePost);
                 },
                 child: Text('OK'),
               ),
