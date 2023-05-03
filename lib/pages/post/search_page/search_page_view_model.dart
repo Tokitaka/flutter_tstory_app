@@ -7,30 +7,30 @@ final searchPageProvider =
     StateNotifierProvider.autoDispose<SearchPageViewModel, SearchPageModel>(
         (ref) {
   Logger().d("postHomePageProvider");
-  return SearchPageViewModel()..notifyInit();
+  return SearchPageViewModel();
 });
 
-// 창고 데이터
 class SearchPageModel {
   List<Post> posts;
+
   SearchPageModel({required this.posts});
 }
 
-// 창고
 class SearchPageViewModel extends StateNotifier<SearchPageModel> {
   SearchPageViewModel() : super(SearchPageModel(posts: []));
 
-  void notifyInit() async {
-    Logger().d("notifyInit");
+  Future<List<Post>> fetchPosts() async {
     final snapshot = await FirebaseFirestore.instance.collection('posts').get();
     final posts = snapshot.docs.map((doc) => Post.fromSnapshot(doc)).toList();
-    state = SearchPageModel(posts: posts);
+    return posts;
   }
 
-  void filterPostsByKeyword(String keyword) {
-    final filteredPosts = state.posts
+  Future<void> filterPostsByKeyword(String keyword) async {
+    final posts = await fetchPosts();
+    final filteredPosts = posts
         .where((post) =>
-            post.title!.contains(keyword) || post.content!.contains(keyword))
+            post.title!.toLowerCase().contains(keyword.toLowerCase()) ||
+            post.content!.toLowerCase().contains(keyword.toLowerCase()))
         .toList();
     state = SearchPageModel(posts: filteredPosts);
   }
