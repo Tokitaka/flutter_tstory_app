@@ -1,26 +1,52 @@
+import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:tstory_app/core/constants/routers.dart';
+import 'package:logger/logger.dart';
+import 'package:tstory_app/pages/post/list_page/home_page/for_you_page.dart';
 
-class SplashScreen extends StatefulWidget {
+class CustomSplashScreen extends StatefulWidget {
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<CustomSplashScreen> createState() => _CustomSplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _CustomSplashScreenState extends State<CustomSplashScreen> {
   @override
   void initState() {
+    initializeFirebase();
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, Routers.home);
-    });
+
+  }
+
+  Future<void> initializeFirebase() async {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyB5tpc5rETd8kVik6-Z9SDctYpW0K0yuZA",
+            appId: "1:544532137880:android:6dad87119343b0271f4ded",
+            messagingSenderId: "544532137880",
+            projectId: "my-tstory-app"));
+    try {
+
+
+
+      await Future.delayed(Duration(seconds: 5));
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => ForYouPage(),
+        ),
+      );
+    } catch (e) {
+      Logger().e("Firebase 초기화 중 오류 발생 : $e");
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Image.asset("assets/logo.jpg"),
+    Logger().d("CustomSplash Screen 빌드됨");
+    return Center(
+      child: Expanded(
+        child: Text("CustomSplash Screen 빌드됨",
+            style: TextStyle(color: Colors.black)),
       ),
     );
   }

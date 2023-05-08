@@ -17,15 +17,7 @@ import 'package:tstory_app/pages/post/search_page/search_page.dart';
 import 'package:tstory_app/pages/post/write_page/write_page.dart';
 
 void main() async {
-  // firebase 초기화
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      options: FirebaseOptions(
-          apiKey: "AIzaSyB5tpc5rETd8kVik6-Z9SDctYpW0K0yuZA",
-          appId: "1:544532137880:android:6dad87119343b0271f4ded",
-          messagingSenderId: "544532137880",
-          projectId: "my-tstory-app"));
-  // addNewUser();
   runApp(
     ProviderScope(
       child: MyApp(),
@@ -46,7 +38,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(textTheme: GoogleFonts.alexandriaTextTheme()),
-      home: SplashScreen(),
+      home: CustomSplashScreen(),
       initialRoute: Routers.home,
       routes: {
         Routers.home: (context) => ForYouPage(),

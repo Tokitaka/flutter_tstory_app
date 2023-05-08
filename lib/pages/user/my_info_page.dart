@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/core/constants/size.dart';
 import 'package:tstory_app/core/constants/theme.dart';
-import 'package:tstory_app/main.dart';
 import 'package:tstory_app/pages/custom_components/custom_arrow_appbar.dart';
 
 class MyInfoPage extends StatelessWidget {
