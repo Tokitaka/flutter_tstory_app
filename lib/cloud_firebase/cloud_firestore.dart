@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/main.dart';
@@ -9,13 +10,14 @@ void addNewPost(String title, content) {
   Map<String, dynamic> user = {
     'email': currentUser!.email,
   };
-  firestore
+  final newPostRef = firestore
       .collection('posts')
       .add({
         'title': title,
         'content': content,
         'author': currentUser!.uid,
         'user': user,
+        'postId': FieldValue.increment(11),
       })
       .then(
         (value) => showDialog(
