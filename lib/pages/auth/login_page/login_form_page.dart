@@ -1,10 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:tstory_app/core/constants/size.dart';
-import 'package:tstory_app/core/constants/theme.dart';
-import 'package:tstory_app/pages/auth/components/custom_form_button.dart';
+import 'package:tstory_app/main.dart';
 import 'package:tstory_app/pages/auth/login_page/components/login_body.dart';
 import 'package:tstory_app/pages/auth/login_page/components/login_form.dart';
+
 class LoginFormPage extends StatelessWidget {
   const LoginFormPage({Key? key}) : super(key: key);
 
@@ -34,8 +33,19 @@ class LoginFormPage extends StatelessWidget {
       ),
     );
   }
+// else {
+//   showDialog(
+//     context: context,
+//     builder: (context) => AlertDialog(
+//       title: Text('Error'),
+//       content: Text('Google Sign-In Failed'),
+//       actions: [
+//         TextButton(
+//             onPressed: () => Navigator.pop(context),
+//             child: Text('OK'))
+//       ],
+//     ),
+//   );
+//   return SizedBox.shrink();
+// }
 }
-
-
-
-

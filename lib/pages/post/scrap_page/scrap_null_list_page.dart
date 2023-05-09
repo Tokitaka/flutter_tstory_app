@@ -4,8 +4,8 @@ import 'package:tstory_app/pages/auth/join_page/join_form_page.dart';
 import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
 import 'package:tstory_app/pages/custom_components/custom_arrow_appbar.dart';
 
-class ScrapListPage extends StatelessWidget {
-  const ScrapListPage({Key? key}) : super(key: key);
+class ScrapNullListPage extends StatelessWidget {
+  const ScrapNullListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

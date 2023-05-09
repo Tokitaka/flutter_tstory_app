@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:tstory_app/main.dart';
 
-Future<UserCredential> signInWithGoogle() async {
+Future<void> signInWithGoogle() async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -13,7 +14,7 @@ Future<UserCredential> signInWithGoogle() async {
     accessToken: googleAuth?.accessToken,
     idToken: googleAuth?.idToken,
   );
-
+  UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+  currentUser = userCredential.user;
   // Once signed in, return the UserCredential
-  return FirebaseAuth.instance.signInWithCredential(credential);
 }

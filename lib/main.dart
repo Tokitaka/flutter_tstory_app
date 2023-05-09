@@ -10,6 +10,7 @@ import 'package:tstory_app/pages/post/list_page/home_page/for_you_page.dart';
 import 'package:tstory_app/pages/auth/join_page/join_form_page.dart';
 import 'package:tstory_app/pages/auth/login_page/login_form_page.dart';
 import 'package:tstory_app/pages/custom_components/custom_splash_screen.dart';
+import 'package:tstory_app/pages/post/scrap_page/scrap_list_page.dart';
 import 'package:tstory_app/pages/user/my_info_page.dart';
 import 'package:tstory_app/pages/post/list_page/my_post_page/my_post_page.dart';
 import 'package:tstory_app/pages/post/scrap_page/scrap_null_list_page.dart';

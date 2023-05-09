@@ -34,15 +34,13 @@ class MyInfoPage extends StatelessWidget {
                 ),
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text("Account Settings", style: TextStyle(fontSize: 20)),
-
-                  Text("여기에 이메일"),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_forward_ios),
-                  )
+                  SizedBox(
+                   width: 8,
+                  ),
+                  Text("${currentUser!.email}"),
                 ],
               ),
               Container(
@@ -54,17 +52,6 @@ class MyInfoPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Account name", style: TextStyle(fontSize: 20)),
-                  Text("여기에 username"),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.arrow_forward_ios),
-                  )
-                ],
               ),
             ],
           ),

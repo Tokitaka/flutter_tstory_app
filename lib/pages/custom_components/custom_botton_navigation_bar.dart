@@ -45,7 +45,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
             }
             break;
           case 3:
-            Navigator.pushReplacementNamed(context, Routers.search);
+            Navigator.pushNamed(context, Routers.search);
             break;
           case 4:
             final userController = ref.read(userControllerProvider);
