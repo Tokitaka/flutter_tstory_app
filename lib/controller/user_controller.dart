@@ -19,6 +19,7 @@ class UserController {
   Future<void> logout() async {
     try {
       await FirebaseAuth.instance.signOut();
+      currentUser = null;
       Navigator.pushNamedAndRemoveUntil(
           mContext!, Routers.home, (route) => false);
       ScaffoldMessenger.of(mContext!)

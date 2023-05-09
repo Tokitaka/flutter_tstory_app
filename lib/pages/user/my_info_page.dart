@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/core/constants/size.dart';
 import 'package:tstory_app/core/constants/theme.dart';
+import 'package:tstory_app/main.dart';
 import 'package:tstory_app/pages/custom_components/custom_arrow_appbar.dart';
 
 class MyInfoPage extends StatelessWidget {
@@ -8,7 +10,9 @@ class MyInfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    if (currentUser != null) {
+      return
+      Scaffold(
         appBar: CustomArrowAppbar(text: "My info"),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -66,5 +70,10 @@ class MyInfoPage extends StatelessWidget {
           ),
         ),
       );
+    }
+    else {
+     Navigator.pushNamed(context, Routers.loginForm);
+     return SizedBox.shrink();
+    }
   }
 }

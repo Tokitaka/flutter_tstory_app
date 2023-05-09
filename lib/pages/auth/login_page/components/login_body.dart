@@ -1,8 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:tstory_app/core/constants/routers.dart';
 import 'package:tstory_app/core/constants/size.dart';
 import 'package:tstory_app/core/constants/theme.dart';
 import 'package:tstory_app/pages/auth/components/custom_form_button.dart';
+import 'package:tstory_app/pages/auth/login_page/google_login_form_page.dart';
 
 class LoginBody extends StatelessWidget {
   const LoginBody({
@@ -14,7 +16,7 @@ class LoginBody extends StatelessWidget {
     return Column(
       children: [
         Text(
-          "Sign in to your VICE account",
+          "Sign in to your Tstory account",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 44),
         ),
         SizedBox(
@@ -50,17 +52,7 @@ class LoginBody extends StatelessWidget {
           height: mg_lg,
         ),
         CustomFormButton(
-            text: "Continue with Apple",
-
-            icon: Icons.apple_outlined),
-        SizedBox(
-          height: mg_sm,
-        ),
-        CustomFormButton(
-            text: "Continue with Facebook",
-
-            icon: Icons.facebook_outlined,
-            buttonColor: Color(0xFF445D91)),
+            text: "Continue with Apple", icon: Icons.apple_outlined),
         SizedBox(
           height: mg_sm,
         ),
@@ -68,6 +60,41 @@ class LoginBody extends StatelessWidget {
           text: "Continue with Google",
           icon: Icons.g_mobiledata_outlined,
           buttonColor: Color(0xFFC1634B),
+          onPressed: (){
+            try {
+             signInWithGoogle();
+             Navigator.pushReplacementNamed(context, "/home");
+            } catch (e) {
+              showDialog(
+                context: context,
+                builder: (context) => AlertDialog(
+                  title: Text('Error'),
+                  content: Text('Google Sign-In Failed'),
+                  actions: [
+                    TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text('OK'))
+                  ],
+                ),
+              );
+            }
+          },
+        ),
+        SizedBox(
+          height: mg_md,
+        ),
+        RichText(
+          text: TextSpan(
+            text: "Just let me in",
+            style: TextStyle(
+                color: Colors.black,
+                decoration: TextDecoration.underline,
+                fontSize: 18),
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.pushReplacementNamed(context, "/home");
+              },
+          ),
         ),
         SizedBox(
           height: mg_md,

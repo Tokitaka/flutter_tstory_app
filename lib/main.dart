@@ -30,9 +30,24 @@ void main() async {
     ),
   );
 }
-
+// Auth 인증 상태 변화 감지
+// FirebaseAuth.instance.authStateChanges().listen((user) {
+// if (user == null) {
+// } else {}
+// });
+// StreamBuilder(
+// stream: FirebaseAuth.instance.authStateChanges(),
+// builder: (context, AsyncSnapshot<User?> user) {
+// if (user.hasData) {
+// return const MainWidget();
+// } else {
+// return const LoginWidget();
+// }
+// },
+// );
 final FirebaseFirestore firestore = FirebaseFirestore.instance;
 User? currentUser = FirebaseAuth.instance.currentUser;
+
 final navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
