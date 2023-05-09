@@ -18,6 +18,12 @@ import 'package:tstory_app/pages/post/write_page/write_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+      options: FirebaseOptions(
+          apiKey: "AIzaSyB5tpc5rETd8kVik6-Z9SDctYpW0K0yuZA",
+          appId: "1:544532137880:android:6dad87119343b0271f4ded",
+          messagingSenderId: "544532137880",
+          projectId: "my-tstory-app"));
   runApp(
     ProviderScope(
       child: MyApp(),
@@ -39,7 +45,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(textTheme: GoogleFonts.alexandriaTextTheme()),
       home: CustomSplashScreen(),
-      initialRoute: Routers.home,
       routes: {
         Routers.home: (context) => ForYouPage(),
         Routers.myPost: (context) => const MyPostPage(),
